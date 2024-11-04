@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React from "react";
+import Card from "@/components/Card";
 
 export default async function page() {
   const response = await fetch(
@@ -11,11 +12,9 @@ export default async function page() {
   const jokes = Array.isArray(data.jokes) ? data.jokes : [data]; // Ensure we have an array
 
   return (
-    <div>
+    <div className="grid grid-cols-1 gap-4 p-4">
       {jokes.map((item) => (
-        <div key={item.id}>
-          <Link href={`/posts/${item.id}`}>{item.setup || "Random Joke"}</Link>
-        </div>
+        <Card key={item.id} joke={item} />
       ))}
     </div>
   );
