@@ -1,10 +1,15 @@
+import Link from "next/link";
 import React from "react";
 
-const Card = ({ title, body }) => {
+const Card = ({ joke }) => {
   return (
-    <div className="card">
-      <h2>{title}</h2>
-      <p>{body}</p>
+    <div className="border rounded-lg p-4 shadow-md">
+      <Link
+        href={`/posts/${joke.id}`}
+        className="text-blue-500 hover:underline"
+      >
+        {joke.setup || "Random Joke"}
+      </Link>
     </div>
   );
 };
