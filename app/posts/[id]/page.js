@@ -1,16 +1,20 @@
+// app/posts/page.js
+import Link from "next/link";
 import React from "react";
+import PostsCard from "@/components/PostsCard";
 
-export default async function page({ params }) {
-  const id = params.id;
-  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
-  const post = await res.json(); // Changed variable name to 'post'
-
-  console.log(post); // Log the post for debugging
+export default async function PostsPage({ params }) {
+  const id = params;
+  const response = await fetch(
+    `https://v2.jokeapi.dev/joke/Programming?id=${id}`
+  );
+  const data = await response.json();
+  console.log(data);
 
   return (
-    <div>
-      <h1>{post.title}</h1> {/* Display the post title */}
-      <p>{post.body}</p> {/* Display the post body */}
+    <div className="flex flex-col items-center h-screen">
+      <h1 className="mb-4 text-2xl font-bold">Posts</h1>
+      <PostsCard joke={data.joke} type={data.type} />
     </div>
   );
 }
