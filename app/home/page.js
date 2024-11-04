@@ -9,7 +9,7 @@ export default async function page() {
   const data = await response.json();
 
   // Check if the data is an array of jokes
-  const jokes = Array.isArray(data.jokes) ? data.jokes : [data]; // Ensure we have an array
+  const jokes = Array.isArray(data.jokes) ? data.jokes : [data]; 
 
   return (
     <div className="grid grid-cols-1 gap-4 p-4">
