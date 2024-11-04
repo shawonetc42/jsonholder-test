@@ -7,9 +7,9 @@ export default async function page() {
     "https://v2.jokeapi.dev/joke/Programming?amount=10"
   ); // Fetching multiple jokes
   const data = await response.json();
+  console.log(data);
 
-  // Check if the data is an array of jokes
-  const jokes = Array.isArray(data.jokes) ? data.jokes : [data]; 
+  const jokes = data.jokes; // {{ edit_1 }} Assigning fetched jokes to a variable
 
   return (
     <div className="grid grid-cols-1 gap-4 p-4">
